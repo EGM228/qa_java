@@ -3,19 +3,16 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.Spy;
-
-import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.*;
 
 @RunWith(Parameterized.class)
-public class TestLionSkills {
+public class TestLionSkillsKittensAndMane {
 
-    public TestLionSkills(String sex, boolean mane){
+    public TestLionSkillsKittensAndMane(String sex, boolean mane){
         this.sex=sex;
         this.mane=mane;
     }
@@ -32,7 +29,6 @@ public class TestLionSkills {
     private final String sex;
     private final boolean mane;
     private Lion lion;
-    private List<String> expextedFood = List.of("Животные", "Птицы", "Рыба");
 
     @Parameterized.Parameters
     public static Object[][] dataForTests() {
@@ -50,15 +46,8 @@ public class TestLionSkills {
     }
 
     @Test
-    public void TestLionDoesHaveMane(){
+    public void testLionDoesHaveMane(){
         boolean actual = lion.doesHaveMane();
         assertEquals(actual,mane);
-    }
-
-    @Test
-    public void TestLionGetFood() throws Exception {
-        when(feline.getFood("Хищник")).thenReturn(expextedFood);
-        List<String> food = lion.getFood();
-        assertEquals(expextedFood,food);
     }
 }
